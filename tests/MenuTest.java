@@ -13,14 +13,19 @@ public class MenuTest {
     }
 
     @Test
-    public void setDelimiter() {
-        menu.setDelimiter('b');
-        assertEquals('b', menu.getDelimiter());
+    public void setDelimiter() throws DelimitadorInvalidoException {
+        menu.setDelimiter("b");
+        assertEquals("b", menu.getDelimiter());
     }
 
     @Test
-    public void setDelimiter2() {
-        menu.setDelimiter('d');
-        assertEquals('d', menu.getDelimiter());
+    public void setDelimiter2() throws DelimitadorInvalidoException {
+        menu.setDelimiter("d");
+        assertEquals("d", menu.getDelimiter());
+    }
+
+    @Test (expected = DelimitadorInvalidoException.class)
+    public void setDelimiterError() throws DelimitadorInvalidoException {
+        menu.setDelimiter("string");
     }
 }
