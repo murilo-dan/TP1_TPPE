@@ -20,4 +20,12 @@ public class FileReaderTest {
         path = "C:\\Users\\analu\\downloadss\\analysisTime.out";
         FileReader.readFile(path);
     }
+
+    @Test
+    public void readFile3() throws ArquivoNaoEncontradoException {
+        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        String first = "---------- Evolution 0 ----------";
+
+        assertEquals(first, FileReader.readFile(path).get(0));
+    }
 }
