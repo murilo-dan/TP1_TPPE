@@ -1,4 +1,5 @@
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class OutputPath {
@@ -17,6 +18,9 @@ public class OutputPath {
 
         if (!file.isDirectory())
             throw new EscritaNaoPermitidaException("Diretorio não existe");
+        if (!Files.isWritable(Paths.get(path)))
+            throw new EscritaNaoPermitidaException("Escrita não permitida");
+
 
         this.path = path;
     }

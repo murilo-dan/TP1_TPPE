@@ -16,7 +16,7 @@ public class OutputPathTest {
     }
 
     @Test
-    public void getPath() throws EscritaNaoPermitidaException {
+    public void setPath() throws EscritaNaoPermitidaException {
         path.setPath("C:\\Users");
         String expected = "C:\\Users";
 
@@ -24,8 +24,13 @@ public class OutputPathTest {
     }
 
     @Test (expected = EscritaNaoPermitidaException.class)
-    public void getPathErro() throws EscritaNaoPermitidaException {
+    public void setPathErroDirectory() throws EscritaNaoPermitidaException {
         path.setPath("C:\\User\\Student");
 
+    }
+
+    @Test (expected = EscritaNaoPermitidaException.class)
+    public void setPathErroWritable() throws EscritaNaoPermitidaException {
+        path.setPath("C:\\Windows");
     }
 }
