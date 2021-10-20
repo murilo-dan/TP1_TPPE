@@ -9,6 +9,6 @@ public enum OutputFormat {
     }
 
     public boolean getFormat() {
-        return true;
+        return format;
     }
 }

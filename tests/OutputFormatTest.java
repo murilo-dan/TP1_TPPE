@@ -5,7 +5,12 @@ import static org.junit.Assert.*;
 public class OutputFormatTest {
 
     @Test
-    public void getFormat() {
+    public void getFormatLinha() {
         assertEquals(true, OutputFormat.LINHA.getFormat());
+    }
+
+    @Test
+    public void getFormatColuna() {
+        assertEquals(false, OutputFormat.COLUNA.getFormat());
     }
 }
