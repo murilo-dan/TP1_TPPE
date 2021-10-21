@@ -2,9 +2,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 public class FileWriter {
-    public static void write(char delimiter, String outPath, String format, String path, String fileName) throws ArquivoNaoEncontradoException, IOException {
+    public static void write(String delimiter, String outPath, String format, String path, String fileName) throws ArquivoNaoEncontradoException, IOException {
         FileReader fileReader = new FileReader();
         fileReader.readFile(path + fileName);
+        if(fileName.contains("Time"))
+            fileName = "analysisTimeTab.out";
+        else if (fileName.contains("Memory"))
+            fileName = "analysisMemoryTab.out";
         if (format.toLowerCase().equals("coluna")) {
             column(fileReader, delimiter, outPath, fileName);
         } else {
@@ -14,7 +18,7 @@ public class FileWriter {
 
     }
 
-    public static void column(FileReader fileReader, char delimiter, String outPath, String fileName) throws IOException {
+    public static void column(FileReader fileReader, String delimiter, String outPath, String fileName) throws IOException {
         BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(outPath + fileName, true));
         int[][] ints = new int[fileReader.getEvolutionsNumber()][fileReader.getMaxAnalysis()];
         writer.write( "0");
@@ -34,7 +38,7 @@ public class FileWriter {
                 if(ints[i][j] != 0)
                     writer.write(delimiter + "" + ints[i][j]);
                 else
-                    writer.write(";");
+                    writer.write(delimiter);
             }
             writer.newLine();
         }
@@ -43,7 +47,7 @@ public class FileWriter {
 
     }
 
-    public static void line(FileReader fileReader, char delimiter, String outPath, String fileName) throws IOException {
+    public static void line(FileReader fileReader, String delimiter, String outPath, String fileName) throws IOException {
         BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(outPath + fileName, true));
         int evolutions = fileReader.getEvolutionsNumber();
         for (int i = 0; i < evolutions; i++) {
