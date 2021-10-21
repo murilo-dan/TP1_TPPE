@@ -17,8 +17,8 @@ public class OutputPathTest {
 
     @Test
     public void setPath() throws EscritaNaoPermitidaException {
-        path.setPath("C:\\Users");
-        String expected = "C:\\Users";
+        path.setPath("C:\\Users\\analu");
+        String expected = "C:\\Users\\analu";
 
         assertEquals(expected, path.getPath());
     }

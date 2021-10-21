@@ -45,13 +45,6 @@ public class FileReaderTest {
     }
 
     @Test
-    public void getAnalysis() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
-        fileReader.readFile(path);
-        assertEquals(0, fileReader.getAnalysis());
-    }
-
-    @Test
     public void getEvolutions2() throws ArquivoNaoEncontradoException {
         path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
         fileReader.readFile(path);
