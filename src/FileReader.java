@@ -47,11 +47,11 @@ public class FileReader {
     }
 
     public int getEvolutions() {
-        return 0;
+        return queueEvolutions.poll();
     }
 
     public int getAnalysis() {
-        return 0;
+        return queueAnalysis.poll();
     }
 
 }
