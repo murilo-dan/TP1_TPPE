@@ -64,4 +64,24 @@ public class FileReaderTest {
         fileReader.readFile(path);
         assertEquals(11, fileReader.getAnalysis());
     }
+
+    @Test
+    public void getEvolutions3() throws ArquivoNaoEncontradoException {
+        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        fileReader.readFile(path);
+        fileReader.getEvolutions();
+        fileReader.getEvolutions();
+        fileReader.getEvolutions();
+        assertEquals(3, fileReader.getEvolutions());
+    }
+
+    @Test
+    public void getAnalysis3() throws ArquivoNaoEncontradoException {
+        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        fileReader.readFile(path);
+        fileReader.getAnalysis();
+        fileReader.getAnalysis();
+        fileReader.getAnalysis();
+        assertEquals(11, fileReader.getAnalysis());
+    }
 }
