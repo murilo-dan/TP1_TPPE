@@ -26,5 +26,13 @@ public class FileWriterTest {
 
         assertTrue(column.get(0).contains("0;1;2;3"));
     }
-    
+
+    @Test
+    public void writeLine() throws ArquivoNaoEncontradoException, IOException {
+        FileWriter.write(';', "C:\\Users\\analu\\", "line", "C:\\Users\\analu\\Downloads\\","analysisTime.out");
+        List<String> lines = Files.readAllLines(Paths.get("C:\\Users\\analu\\" + "analysisTime.out"), StandardCharsets.UTF_8);
+
+        assertTrue(lines.get(0).contains("0;1110;3200;934"));
+    }
+
 }
