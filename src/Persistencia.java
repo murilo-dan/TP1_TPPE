@@ -18,35 +18,17 @@ public class Persistencia {
     private Queue<Integer> queueAnalysis;
     private Queue<Integer> analysisData;
 
-    public  List<String> persistenciaRead(String fileName) throws ArquivoNaoEncontradoException {
-        queueEvolutions = new ArrayDeque<>();
-        queueAnalysis = new ArrayDeque<>();
-        analysisData = new ArrayDeque<>();
+    public  List<String> fileRead(String fileName) throws ArquivoNaoEncontradoException {
+
         lines = Collections.emptyList();
-        maxAnalysis = Integer.MIN_VALUE;
+
         try {
             lines = Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new ArquivoNaoEncontradoException(fileName);
         }
 
-        for (int i = 0; i < lines.size(); i++) {
-            if(lines.get(i).contains("Evolution")) {
-                queueEvolutions.add(evolutions);
-                maxAnalysis = Math.max(maxAnalysis, analysis);
-                analysis = 0;
-                evolutions++;
-            } else {
-                analysisData.add(Integer.parseInt(lines.get(i)));
-                analysis++;
-            }
-            if(i + 1 < lines.size() && lines.get(i + 1).contains("Evolution")) {
-                queueAnalysis.add(analysis);
-            }
-        }
-        queueAnalysis.add(analysis);
         return lines;
-
     }
 
     public int getEvolutions() {
@@ -110,5 +92,30 @@ public class Persistencia {
             writer.newLine();
         }
         writer.close();
+    }
+
+    public List<String> evolutionsAndAnalysis(String fileName) throws ArquivoNaoEncontradoException {
+        queueEvolutions = new ArrayDeque<>();
+        queueAnalysis = new ArrayDeque<>();
+        analysisData = new ArrayDeque<>();
+        maxAnalysis = Integer.MIN_VALUE;
+        List<String> lines = fileRead(fileName);
+
+        for (int i = 0; i < lines.size(); i++) {
+            if(lines.get(i).contains("Evolution")) {
+                queueEvolutions.add(evolutions);
+                maxAnalysis = Math.max(maxAnalysis, analysis);
+                analysis = 0;
+                evolutions++;
+            } else {
+                analysisData.add(Integer.parseInt(lines.get(i)));
+                analysis++;
+            }
+            if(i + 1 < lines.size() && lines.get(i + 1).contains("Evolution")) {
+                queueAnalysis.add(analysis);
+            }
+        }
+        queueAnalysis.add(analysis);
+        return lines;
     }
 }
