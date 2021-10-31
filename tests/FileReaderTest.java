@@ -17,20 +17,21 @@ public class FileReaderTest {
 
     @Test
     public void readFile() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
 
         assertEquals(true, fileReader.readFile(path) instanceof List);
     }
 
     @Test (expected = ArquivoNaoEncontradoException.class)
     public void readFileWithError() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\downloadss\\analysisTime.out";
+        path = "resource\\inputs\\analysisTime.out";
+        System.out.println();
         fileReader.readFile(path);
     }
 
     @Test
     public void readFile3() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
         String first = "---------- Evolution 0 ----------";
 
         assertEquals(first, fileReader.readFile(path).get(0));
@@ -39,28 +40,28 @@ public class FileReaderTest {
 
     @Test
     public void getEvolutions() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
         fileReader.readFile(path);
         assertEquals(0, fileReader.getEvolutions());
     }
 
     @Test
     public void getEvolutions2() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
         fileReader.readFile(path);
         assertEquals(0, fileReader.getEvolutions());
     }
 
     @Test
     public void getAnalysis2() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
         fileReader.readFile(path);
         assertEquals(11, fileReader.getAnalysis());
     }
 
     @Test
     public void getEvolutions3() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
         fileReader.readFile(path);
         fileReader.getEvolutions();
         fileReader.getEvolutions();
@@ -70,7 +71,7 @@ public class FileReaderTest {
 
     @Test
     public void getAnalysis3() throws ArquivoNaoEncontradoException {
-        path = "C:\\Users\\analu\\Downloads\\analysisTime.out";
+        path = "resource\\input\\analysisTime.out";
         fileReader.readFile(path);
         fileReader.getAnalysis();
         fileReader.getAnalysis();
